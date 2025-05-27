@@ -1,0 +1,24 @@
+def analizuvaty_tekst_pro_komah(vkhidnyy_tekst):
+   slova = vkhidnyy_tekst.lower().replace(".", "").replace(",", "").split()
+   chastoty = {}
+   for slovo in slova:
+       chastoty[slovo] = chastoty.get(slovo, 0) + 1
+   return chastoty
+
+
+# Текст про комах
+tekst = """
+Комахи — це найбільша група тварин на Землі. Бджоли, метелики, жуки та мурахи —
+усі вони належать до класу комахи. Комахи мають три пари ніг, тіло поділено на голову,
+груди й черевце. Багато з них можуть літати, деякі — живуть під водою. Комахи — важливі
+запилювачі рослин, але є й шкідники, які завдають шкоди врожаю.
+"""
+
+
+slovnyk_komah = analizuvaty_tekst_pro_komah(tekst)
+print("Частота слів про комах:", slovnyk_komah)
+
+
+# Слова, які зустрічаються більше 3 разів
+chasti_slova = [slovo for slovo, kilkist in slovnyk_komah.items() if kilkist > 3]
+print("Слова, що зустрічаються більше 3 разів:", chasti_slova)
