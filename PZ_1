@@ -1,5 +1,3 @@
-Робота з текстом — тема: КОМАХИ в природі
-
 import json
 import urllib.request
 
