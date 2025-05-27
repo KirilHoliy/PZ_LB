@@ -1,3 +1,5 @@
+Робота з текстом — тема: КОМАХИ в природі
+
 def analizuvaty_tekst_pro_komah(vkhidnyy_tekst):
    slova = vkhidnyy_tekst.lower().replace(".", "").replace(",", "").split()
    chastoty = {}
