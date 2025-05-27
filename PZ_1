@@ -1,0 +1,34 @@
+import json
+import urllib.request
+
+# Завдання: отримати курс EUR за тиждень
+url = "https://bank.gov.ua/NBU_Exchange/exchange_site?start=20250317&end=20250321&valcode=eur&json"
+
+try:
+    with urllib.request.urlopen(url) as response:
+        raw_data = response.read().decode()
+        data = json.loads(raw_data)
+
+        print("Курси євро за тиждень:")
+        dates = []
+        rates = []
+
+        for entry in data:
+            date = entry['exchangedate']
+            rate = entry['rate']
+            print(f"{date}: {rate} UAH")
+            dates.append(date)
+            rates.append(rate)
+
+        # Текстовий "графік"
+        print("\nТекстовий графік зміни курсу EUR:")
+        max_rate = max(rates)
+        min_rate = min(rates)
+        diff = max_rate - min_rate if max_rate != min_rate else 1
+
+        for date, rate in zip(dates, rates):
+            bar = "#" * int(((rate - min_rate) / diff) * 50)
+            print(f"{date}: {bar} {rate:.2f}")
+
+except Exception as e:
+    print(f"Сталася помилка: {e}")
