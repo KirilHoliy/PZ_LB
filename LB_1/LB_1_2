@@ -20,3 +20,7 @@ onovyty_populyatsiyu("кенгуру", 5)
 
 
 print("Стан зоопарку:", zoopark)
+
+
+znykayuchi_vydy = [t for t, k in zoopark.items() if k < 5]
+print("Зникаючі види:", znykayuchi_vydy)
